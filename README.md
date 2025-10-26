@@ -14,7 +14,7 @@ or you can use [online compile](https://fizruk.github.io/stella/playground/).
 ### Preprocessor options
 |           Name           |                           Description                         |
 |--------------------------|---------------------------------------------------------------|
-|      MAX_ALLOC_SIZE      | Maximum heap size for objects allocations.                    |
+|      MAX_ALLOC_SIZE      | Maximum heap size (in bytes) for objects allocations.         |
 |     GC_NO_INCREMENT      | Disables GC increment mode.                                   |
 |       STELLA_DEBUG       | Enables some Stella debug messages.                           |
 |     STELLA_GC_DEBUG      | Enables some GC debug messages.                               |
