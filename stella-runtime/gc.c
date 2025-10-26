@@ -212,7 +212,7 @@ static void* forward(void *p) {
  * root and reset residency statistics.
  */
 static void do_copy_gc(void) {
-  // print_gc_state();
+  print_gc_state();
 
   #ifndef GC_NO_INCREMENT
     if (scanptr < nextptr) { raise_no_memory_error(); }
@@ -425,7 +425,7 @@ static void dump_stella_objects(const void *start, const void *end) {
   const void *p = start;
   size_t objects_dumped = 0;
 
-  while (p < end && objects_dumped <= GC_STATS_OBJECTS_TO_DUMP) {
+  while (p < end && objects_dumped < GC_STATS_OBJECTS_TO_DUMP) {
     const stella_object *obj = p;
 
     dump_stella_object(obj);
@@ -477,6 +477,8 @@ void print_gc_roots(void) {
   size_t i = 1;
 
   FOR_EACH_ROOT(node) {
+    if (i > GC_STATS_OBJECTS_TO_DUMP) { break; }
+
     void **r = node->data;
 
     const void *p = *r;
